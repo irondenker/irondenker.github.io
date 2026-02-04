@@ -286,6 +286,12 @@
             user-select: none;
         }
 
+        .subtext {
+            padding: 0.4rem;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
         .icon {
             width: 22px;
             height: 22px;
@@ -314,13 +320,12 @@
 </script>
 
 <body>
-    <div class="wrap">
+    <span class="wrap">
         <div class="topbar">
             <button class="toggle" id="themeToggle" type="button" aria-label="테마 전환">
                 🌗 Theme
             </button>
         </div>
-
 
         <section class="logos" aria-label="logos">
             <!-- SVG 1 -->
@@ -373,7 +378,7 @@
                             <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2" />
                             <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0" />
                         </svg>
-                        <span>Tistory</span>
+                        <span>Threatnought<span class="subtext">Blog</span></span>
                     </span>
                     <span class="arrow">↗</span>
                 </a>
@@ -398,46 +403,44 @@
                     <span class="arrow">↗</span>
                 </a>
             </section>
-
-
         </main>
         <footer>
             <div class="meta">© 2025–2026 Irondenker™. All rights reserved.</div>
         </footer>
-    </div>
+        </div>
 
-    <script>
-        (function() {
-            const KEY = "irondenker_theme";
-            const html = document.documentElement;
-            const btn = document.getElementById("themeToggle");
+        <script>
+            (function() {
+                const KEY = "irondenker_theme";
+                const html = document.documentElement;
+                const btn = document.getElementById("themeToggle");
 
-            function setTheme(theme) {
-                if (!theme) {
-                    html.removeAttribute("data-theme");
-                    localStorage.removeItem(KEY);
-                    return;
+                function setTheme(theme) {
+                    if (!theme) {
+                        html.removeAttribute("data-theme");
+                        localStorage.removeItem(KEY);
+                        return;
+                    }
+                    html.setAttribute("data-theme", theme);
+                    localStorage.setItem(KEY, theme);
                 }
-                html.setAttribute("data-theme", theme);
-                localStorage.setItem(KEY, theme);
-            }
 
-            // 저장된 값 우선 적용
-            const saved = localStorage.getItem(KEY);
-            if (saved === "light" || saved === "dark") setTheme(saved);
+                // 저장된 값 우선 적용
+                const saved = localStorage.getItem(KEY);
+                if (saved === "light" || saved === "dark") setTheme(saved);
 
-            btn.addEventListener("click", () => {
-                const cur = html.getAttribute("data-theme");
-                if (cur === "dark") setTheme("light");
-                else if (cur === "light") setTheme("dark");
-                else {
-                    // 시스템값을 읽어서 반대로 토글
-                    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-                    setTheme(prefersDark ? "light" : "dark");
-                }
-            });
-        })();
-    </script>
+                btn.addEventListener("click", () => {
+                    const cur = html.getAttribute("data-theme");
+                    if (cur === "dark") setTheme("light");
+                    else if (cur === "light") setTheme("dark");
+                    else {
+                        // 시스템값을 읽어서 반대로 토글
+                        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                        setTheme(prefersDark ? "light" : "dark");
+                    }
+                });
+            })();
+        </script>
 </body>
 
 
