@@ -1,5 +1,18 @@
 :root {
-    --bg: #0b0c10;
+    --bg: #161412;
+    --paper-base: #161412;
+    --paper-wash: rgba(255, 244, 218, .015);
+    --paper-rule: rgba(255, 255, 255, .06);
+    --paper-rule-soft: rgba(255, 255, 255, .026);
+    --paper-grain: rgba(255, 255, 255, .116);
+    --paper-age: rgba(164, 129, 80, .078);
+    --paper-fleck: rgba(255, 238, 204, .2);
+    --paper-fleck-soft: rgba(255, 238, 204, .11);
+    --paper-fleck-strong: rgba(255, 238, 204, .3);
+    --paper-fleck-warm: rgba(246, 190, 105, .24);
+    --paper-fleck-cool: rgba(184, 214, 255, .21);
+    --paper-fleck-faded: rgba(255, 248, 226, .05);
+    --paper-shadow: rgba(0, 0, 0, .08);
     --card: rgba(255, 255, 255, .06);
     --fg: rgba(255, 255, 255, .92);
     --muted: rgba(255, 255, 255, .68);
@@ -14,7 +27,20 @@
 /* 시스템이 라이트 선호면 기본을 라이트로 */
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: #f7f8fb;
+        --bg: #f4eddf;
+        --paper-base: #f4eddf;
+        --paper-wash: rgba(203, 224, 242, .168);
+        --paper-rule: rgba(87, 132, 169, .16);
+        --paper-rule-soft: rgba(87, 132, 169, .055);
+        --paper-grain: rgba(83, 66, 45, .238);
+        --paper-age: rgba(165, 129, 78, .128);
+        --paper-fleck: rgba(72, 53, 32, .38);
+        --paper-fleck-soft: rgba(72, 53, 32, .22);
+        --paper-fleck-strong: rgba(72, 53, 32, .54);
+        --paper-fleck-warm: rgba(122, 70, 24, .45);
+        --paper-fleck-cool: rgba(46, 82, 118, .36);
+        --paper-fleck-faded: rgba(104, 86, 62, .12);
+        --paper-shadow: rgba(87, 116, 142, .05);
         --card: rgba(0, 0, 0, .04);
         --fg: rgba(0, 0, 0, .88);
         --muted: rgba(0, 0, 0, .60);
@@ -28,7 +54,20 @@
 
 /* 토글 강제 라이트/다크 */
 html[data-theme="dark"] {
-    --bg: #0b0c10;
+    --bg: #161412;
+    --paper-base: #161412;
+    --paper-wash: rgba(255, 244, 218, .015);
+    --paper-rule: rgba(255, 255, 255, .06);
+    --paper-rule-soft: rgba(255, 255, 255, .026);
+    --paper-grain: rgba(255, 255, 255, .116);
+    --paper-age: rgba(164, 129, 80, .078);
+    --paper-fleck: rgba(255, 238, 204, .2);
+    --paper-fleck-soft: rgba(255, 238, 204, .11);
+    --paper-fleck-strong: rgba(255, 238, 204, .3);
+    --paper-fleck-warm: rgba(246, 190, 105, .24);
+    --paper-fleck-cool: rgba(184, 214, 255, .21);
+    --paper-fleck-faded: rgba(255, 248, 226, .05);
+    --paper-shadow: rgba(0, 0, 0, .08);
     --card: rgba(255, 255, 255, .06);
     --fg: rgba(255, 255, 255, .92);
     --muted: rgba(255, 255, 255, .68);
@@ -40,7 +79,20 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="light"] {
-    --bg: #f7f8fb;
+    --bg: #f4eddf;
+    --paper-base: #f4eddf;
+    --paper-wash: rgba(203, 224, 242, .168);
+    --paper-rule: rgba(87, 132, 169, .16);
+    --paper-rule-soft: rgba(87, 132, 169, .055);
+    --paper-grain: rgba(83, 66, 45, .238);
+    --paper-age: rgba(165, 129, 78, .128);
+    --paper-fleck: rgba(72, 53, 32, .38);
+    --paper-fleck-soft: rgba(72, 53, 32, .22);
+    --paper-fleck-strong: rgba(72, 53, 32, .54);
+    --paper-fleck-warm: rgba(122, 70, 24, .45);
+    --paper-fleck-cool: rgba(46, 82, 118, .36);
+    --paper-fleck-faded: rgba(104, 86, 62, .12);
+    --paper-shadow: rgba(87, 116, 142, .05);
     --card: rgba(0, 0, 0, .04);
     --fg: rgba(0, 0, 0, .88);
     --muted: rgba(0, 0, 0, .60);
@@ -58,19 +110,229 @@ html[data-theme="light"] {
 body {
     margin: 0;
     min-height: 100svh;
-    background: radial-gradient(1200px 600px at 50% -200px, rgba(255, 255, 255, .14), transparent 60%),
-        radial-gradient(900px 500px at 10% 10%, rgba(120, 120, 255, .10), transparent 55%),
-        radial-gradient(900px 500px at 90% 15%, rgba(255, 120, 120, .08), transparent 55%),
-        var(--bg);
+    background:
+        linear-gradient(176deg, transparent 0 22%, var(--paper-wash) 38%, transparent 62% 100%),
+        radial-gradient(ellipse at 16% 12%, var(--paper-age) 0, transparent 58px),
+        radial-gradient(ellipse at 82% 24%, var(--paper-age) 0, transparent 72px),
+        radial-gradient(ellipse at 34% 88%, var(--paper-age) 0, transparent 86px),
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 33px,
+            var(--paper-rule-soft) 34px,
+            var(--paper-rule) 35px,
+            transparent 36px 52px
+        ),
+        var(--paper-base);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
     color: var(--fg);
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     line-height: 1.5;
     padding: 28px 16px;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 0.89px 0.79px at 27px 1199px, var(--paper-fleck) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.12px 1.18px at 657px 449px, var(--paper-fleck-faded) 0 43%, transparent 100%),
+        radial-gradient(ellipse 1.49px 1.71px at 1321px 860px, var(--paper-fleck-cool) 0 38%, transparent 100%),
+        radial-gradient(ellipse 1.86px 2.24px at 306px 129px, var(--paper-fleck-cool) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.23px 2.77px at 925px 559px, var(--paper-fleck-warm) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.60px 1.00px at 1578px 950px, var(--paper-fleck-strong) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.97px 1.53px at 552px 199px, var(--paper-fleck-strong) 0 42%, transparent 100%),
+        radial-gradient(ellipse 3.94px 2.06px at 1160px 609px, var(--paper-fleck-soft) 0 37%, transparent 100%),
+        radial-gradient(ellipse 1.11px 2.59px at 202px 980px, var(--paper-fleck) 0 44%, transparent 100%),
+        radial-gradient(ellipse 1.48px 0.82px at 765px 209px, var(--paper-fleck) 0 39%, transparent 100%),
+        radial-gradient(ellipse 1.85px 1.35px at 1362px 696px, var(--paper-fleck-faded) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.22px 2.29px at 393px 1047px, var(--paper-fleck-cool) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.59px 2.41px at 1058px 256px, var(--paper-fleck-cool) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.96px 2.94px at 44px 723px, var(--paper-fleck-warm) 0 43%, transparent 100%),
+        radial-gradient(ellipse 3.93px 1.17px at 664px 1151px, var(--paper-fleck-strong) 0 38%, transparent 100%),
+        radial-gradient(ellipse 1.10px 1.70px at 1318px 340px, var(--paper-fleck-strong) 0 45%, transparent 100%),
+        radial-gradient(ellipse 1.47px 2.23px at 293px 787px, var(--paper-fleck-soft) 0 40%, transparent 100%),
+        radial-gradient(ellipse 1.84px 2.76px at 902px 1195px, var(--paper-fleck) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.21px 0.99px at 1545px 461px, var(--paper-fleck) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.58px 1.52px at 509px 888px, var(--paper-fleck-faded) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.95px 2.05px at 1107px 76px, var(--paper-fleck-cool) 0 44%, transparent 100%),
+        radial-gradient(ellipse 3.92px 2.58px at 139px 522px, var(--paper-fleck-cool) 0 39%, transparent 100%),
+        radial-gradient(ellipse 1.09px 0.99px at 805px 929px, var(--paper-fleck-warm) 0 46%, transparent 100%),
+        radial-gradient(ellipse 1.46px 1.34px at 1392px 97px, var(--paper-fleck-strong) 0 41%, transparent 100%),
+        radial-gradient(ellipse 1.83px 1.87px at 413px 523px, var(--paper-fleck-strong) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.20px 2.40px at 955px 1007px, var(--paper-fleck-soft) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.57px 2.93px at 44px 155px, var(--paper-fleck) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.94px 1.16px at 654px 658px, var(--paper-fleck) 0 45%, transparent 100%),
+        radial-gradient(ellipse 3.91px 1.69px at 1298px 1025px, var(--paper-fleck-faded) 0 40%, transparent 100%),
+        radial-gradient(ellipse 1.08px 2.22px at 263px 250px, var(--paper-fleck-cool) 0 47%, transparent 100%),
+        radial-gradient(ellipse 1.45px 2.75px at 862px 636px, var(--paper-fleck-cool) 0 42%, transparent 100%),
+        radial-gradient(ellipse 1.82px 0.98px at 1495px 1080px, var(--paper-fleck-warm) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.19px 1.51px at 449px 285px, var(--paper-fleck-strong) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.56px 2.49px at 1150px 748px, var(--paper-fleck-strong) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.93px 2.57px at 172px 1172px, var(--paper-fleck-soft) 0 46%, transparent 100%),
+        radial-gradient(ellipse 3.89px 0.80px at 715px 357px, var(--paper-fleck) 0 41%, transparent 100%),
+        radial-gradient(ellipse 1.07px 1.33px at 1405px 800px, var(--paper-fleck) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.44px 1.86px at 416px 4px, var(--paper-fleck-faded) 0 43%, transparent 100%),
+        radial-gradient(ellipse 1.81px 2.39px at 948px 466px, var(--paper-fleck-cool) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.18px 2.92px at 27px 889px, var(--paper-fleck-cool) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.55px 1.15px at 627px 73px, var(--paper-fleck-warm) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.92px 1.68px at 1261px 515px, var(--paper-fleck-strong) 0 47%, transparent 100%),
+        radial-gradient(ellipse 3.88px 2.21px at 216px 918px, var(--paper-fleck-strong) 0 42%, transparent 100%),
+        radial-gradient(ellipse 1.06px 2.74px at 805px 179px, var(--paper-fleck-soft) 0 37%, transparent 100%),
+        radial-gradient(ellipse 1.43px 1.18px at 1428px 601px, var(--paper-fleck) 0 44%, transparent 100%),
+        radial-gradient(ellipse 1.80px 1.50px at 485px 984px, var(--paper-fleck) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.17px 2.03px at 1063px 225px, var(--paper-fleck-faded) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.54px 2.56px at 75px 627px, var(--paper-fleck-cool) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.91px 0.79px at 721px 1087px, var(--paper-fleck-cool) 0 36%, transparent 100%),
+        radial-gradient(ellipse 3.87px 1.32px at 1288px 308px, var(--paper-fleck-warm) 0 43%, transparent 100%),
+        radial-gradient(ellipse 1.05px 1.85px at 289px 690px, var(--paper-fleck-strong) 0 38%, transparent 100%),
+        radial-gradient(ellipse 1.42px 2.38px at 924px 1130px, var(--paper-fleck-strong) 0 45%, transparent 100%),
+        radial-gradient(ellipse 1.79px 2.91px at 1593px 331px, var(--paper-fleck-soft) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.16px 1.14px at 583px 790px, var(--paper-fleck) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.53px 1.67px at 1207px 10px, var(--paper-fleck) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.90px 2.68px at 152px 391px, var(--paper-fleck-faded) 0 37%, transparent 100%),
+        radial-gradient(ellipse 3.86px 2.73px at 844px 830px, var(--paper-fleck-cool) 0 44%, transparent 100%),
+        radial-gradient(ellipse 1.04px 0.96px at 1457px 30px, var(--paper-fleck-cool) 0 39%, transparent 100%),
+        radial-gradient(ellipse 1.41px 1.49px at 391px 488px, var(--paper-fleck-warm) 0 46%, transparent 100%),
+        radial-gradient(ellipse 1.78px 2.02px at 1072px 907px, var(--paper-fleck-strong) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.15px 2.55px at 74px 87px, var(--paper-fleck-strong) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.52px 0.78px at 710px 525px, var(--paper-fleck-soft) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.89px 1.31px at 1267px 924px, var(--paper-fleck) 0 38%, transparent 100%),
+        radial-gradient(ellipse 3.85px 1.84px at 258px 181px, var(--paper-fleck) 0 45%, transparent 100%),
+        radial-gradient(ellipse 1.03px 2.37px at 883px 599px, var(--paper-fleck-faded) 0 40%, transparent 100%),
+        radial-gradient(ellipse 1.40px 2.90px at 1542px 978px, var(--paper-fleck-cool) 0 47%, transparent 100%),
+        radial-gradient(ellipse 1.77px 1.38px at 522px 215px, var(--paper-fleck-cool) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.14px 1.66px at 1136px 613px, var(--paper-fleck-warm) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.51px 2.19px at 184px 1069px, var(--paper-fleck-strong) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.88px 2.72px at 753px 286px, var(--paper-fleck-strong) 0 39%, transparent 100%),
+        radial-gradient(ellipse 3.83px 0.95px at 1356px 761px, var(--paper-fleck-soft) 0 46%, transparent 100%),
+        radial-gradient(ellipse 1.02px 1.48px at 393px 1100px, var(--paper-fleck) 0 41%, transparent 100%),
+        radial-gradient(ellipse 1.39px 2.01px at 1064px 394px, var(--paper-fleck) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.76px 2.54px at 56px 752px, var(--paper-fleck-faded) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.13px 0.77px at 682px 1168px, var(--paper-fleck-cool) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.50px 1.30px at 1229px 442px, var(--paper-fleck-cool) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.87px 1.83px at 323px 877px, var(--paper-fleck-warm) 0 40%, transparent 100%),
+        radial-gradient(ellipse 3.82px 2.88px at 938px 73px, var(--paper-fleck-strong) 0 47%, transparent 100%),
+        radial-gradient(ellipse 1.01px 2.89px at 1474px 527px, var(--paper-fleck-strong) 0 42%, transparent 100%),
+        radial-gradient(ellipse 1.38px 1.12px at 557px 942px, var(--paper-fleck-soft) 0 37%, transparent 100%),
+        radial-gradient(ellipse 1.75px 1.65px at 1161px 118px, var(--paper-fleck) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.12px 2.18px at 86px 552px, var(--paper-fleck) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.49px 2.71px at 758px 947px, var(--paper-fleck-faded) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.86px 0.94px at 1351px 200px, var(--paper-fleck-cool) 0 41%, transparent 100%),
+        radial-gradient(ellipse 3.81px 1.47px at 378px 614px, var(--paper-fleck-cool) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.00px 2.00px at 1039px 989px, var(--paper-fleck-warm) 0 43%, transparent 100%),
+        radial-gradient(ellipse 1.37px 2.53px at 21px 222px, var(--paper-fleck-strong) 0 38%, transparent 100%),
+        radial-gradient(ellipse 1.74px 0.76px at 637px 713px, var(--paper-fleck-strong) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.11px 1.57px at 1174px 1068px, var(--paper-fleck-soft) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.48px 1.82px at 258px 281px, var(--paper-fleck) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.85px 2.35px at 863px 752px, var(--paper-fleck) 0 42%, transparent 100%),
+        radial-gradient(ellipse 3.80px 2.88px at 1502px 1184px, var(--paper-fleck-faded) 0 37%, transparent 100%),
+        radial-gradient(ellipse 0.99px 1.11px at 462px 377px, var(--paper-fleck-cool) 0 44%, transparent 100%),
+        radial-gradient(ellipse 1.36px 1.64px at 1056px 828px, var(--paper-fleck-cool) 0 39%, transparent 100%),
+        radial-gradient(ellipse 1.73px 2.17px at 84px 40px, var(--paper-fleck-warm) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.10px 2.70px at 746px 413px, var(--paper-fleck-strong) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.47px 0.93px at 1329px 844px, var(--paper-fleck-strong) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.84px 1.46px at 346px 36px, var(--paper-fleck-soft) 0 43%, transparent 100%),
+        radial-gradient(ellipse 3.79px 1.99px at 997px 486px, var(--paper-fleck) 0 38%, transparent 100%),
+        radial-gradient(ellipse 0.98px 3.07px at 1569px 897px, var(--paper-fleck) 0 45%, transparent 100%),
+        radial-gradient(ellipse 1.35px 0.75px at 575px 166px, var(--paper-fleck-faded) 0 40%, transparent 100%),
+        radial-gradient(ellipse 1.72px 1.28px at 1215px 596px, var(--paper-fleck-cool) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.09px 1.81px at 176px 987px, var(--paper-fleck-cool) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.46px 2.34px at 771px 236px, var(--paper-fleck-warm) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.83px 2.87px at 1400px 646px, var(--paper-fleck-strong) 0 44%, transparent 100%),
+        radial-gradient(ellipse 3.78px 1.10px at 463px 1017px, var(--paper-fleck-strong) 0 39%, transparent 100%),
+        radial-gradient(ellipse 0.97px 1.63px at 1047px 246px, var(--paper-fleck-soft) 0 46%, transparent 100%),
+        radial-gradient(ellipse 1.34px 2.16px at 65px 733px, var(--paper-fleck) 0 41%, transparent 100%),
+        radial-gradient(ellipse 1.71px 2.69px at 717px 1084px, var(--paper-fleck) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.08px 0.92px at 1290px 293px, var(--paper-fleck-faded) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.45px 1.77px at 297px 760px, var(--paper-fleck-cool) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.82px 1.98px at 938px 1188px, var(--paper-fleck-cool) 0 45%, transparent 100%),
+        radial-gradient(ellipse 3.76px 2.51px at 1500px 377px, var(--paper-fleck-warm) 0 40%, transparent 100%),
+        radial-gradient(ellipse 0.96px 0.74px at 496px 824px, var(--paper-fleck-strong) 0 47%, transparent 100%),
+        radial-gradient(ellipse 1.33px 1.27px at 1126px 32px, var(--paper-fleck-strong) 0 42%, transparent 100%),
+        radial-gradient(ellipse 1.70px 1.80px at 190px 498px, var(--paper-fleck-soft) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.07px 2.33px at 775px 925px, var(--paper-fleck) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.44px 2.86px at 1394px 113px, var(--paper-fleck) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.81px 1.09px at 447px 559px, var(--paper-fleck-faded) 0 46%, transparent 100%),
+        radial-gradient(ellipse 3.75px 1.62px at 1021px 966px, var(--paper-fleck-cool) 0 41%, transparent 100%),
+        radial-gradient(ellipse 0.95px 2.15px at 29px 134px, var(--paper-fleck-cool) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.32px 3.27px at 671px 560px, var(--paper-fleck-warm) 0 43%, transparent 100%),
+        radial-gradient(ellipse 1.69px 0.91px at 1234px 1044px, var(--paper-fleck-strong) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.06px 1.44px at 231px 192px, var(--paper-fleck-strong) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.43px 1.97px at 862px 695px, var(--paper-fleck-soft) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.80px 2.50px at 1527px 1062px, var(--paper-fleck) 0 47%, transparent 100%),
+        radial-gradient(ellipse 3.74px 0.73px at 513px 287px, var(--paper-fleck) 0 42%, transparent 100%),
+        radial-gradient(ellipse 0.94px 1.26px at 1133px 673px, var(--paper-fleck-faded) 0 37%, transparent 100%),
+        radial-gradient(ellipse 1.31px 1.79px at 187px 1117px, var(--paper-fleck-cool) 0 44%, transparent 100%),
+        radial-gradient(ellipse 1.68px 2.32px at 762px 322px, var(--paper-fleck-cool) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.05px 2.85px at 1371px 785px, var(--paper-fleck-warm) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.42px 1.08px at 414px 9px, var(--paper-fleck-strong) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.79px 1.96px at 978px 394px, var(--paper-fleck-strong) 0 36%, transparent 100%),
+        radial-gradient(ellipse 3.73px 2.14px at 1576px 837px, var(--paper-fleck-soft) 0 43%, transparent 100%),
+        radial-gradient(ellipse 0.93px 2.67px at 608px 41px, var(--paper-fleck) 0 38%, transparent 100%),
+        radial-gradient(ellipse 1.30px 0.90px at 1274px 503px, var(--paper-fleck) 0 45%, transparent 100%),
+        radial-gradient(ellipse 1.67px 1.43px at 261px 926px, var(--paper-fleck-faded) 0 40%, transparent 100%),
+        radial-gradient(ellipse 2.04px 1.96px at 882px 110px, var(--paper-fleck-cool) 0 47%, transparent 100%),
+        radial-gradient(ellipse 2.41px 2.49px at 1424px 552px, var(--paper-fleck-cool) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.78px 0.72px at 513px 955px, var(--paper-fleck-warm) 0 37%, transparent 100%),
+        radial-gradient(ellipse 3.72px 1.25px at 1123px 216px, var(--paper-fleck-strong) 0 44%, transparent 100%),
+        radial-gradient(ellipse 0.92px 1.78px at 167px 638px, var(--paper-fleck-strong) 0 39%, transparent 100%),
+        radial-gradient(ellipse 1.29px 2.31px at 732px 1021px, var(--paper-fleck-soft) 0 46%, transparent 100%),
+        radial-gradient(ellipse 1.66px 3.46px at 1331px 262px, var(--paper-fleck) 0 41%, transparent 100%),
+        radial-gradient(ellipse 2.03px 1.07px at 364px 664px, var(--paper-fleck) 0 36%, transparent 100%),
+        radial-gradient(ellipse 2.40px 1.60px at 918px 1124px, var(--paper-fleck-faded) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.77px 2.13px at 19px 345px, var(--paper-fleck-cool) 0 38%, transparent 100%),
+        radial-gradient(ellipse 3.71px 2.66px at 641px 727px, var(--paper-fleck-cool) 0 45%, transparent 100%),
+        radial-gradient(ellipse 0.91px 0.89px at 1184px 1167px, var(--paper-fleck-warm) 0 40%, transparent 100%),
+        radial-gradient(ellipse 1.28px 1.42px at 274px 368px, var(--paper-fleck-strong) 0 47%, transparent 100%),
+        radial-gradient(ellipse 1.65px 1.95px at 885px 827px, var(--paper-fleck-strong) 0 42%, transparent 100%),
+        radial-gradient(ellipse 2.02px 2.48px at 1417px 47px, var(--paper-fleck-soft) 0 37%, transparent 100%),
+        radial-gradient(ellipse 2.39px 0.71px at 496px 428px, var(--paper-fleck) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.76px 1.24px at 1096px 867px, var(--paper-fleck) 0 39%, transparent 100%),
+        radial-gradient(ellipse 3.69px 2.16px at 130px 67px, var(--paper-fleck-faded) 0 46%, transparent 100%),
+        radial-gradient(ellipse 0.90px 2.30px at 685px 525px, var(--paper-fleck-cool) 0 41%, transparent 100%),
+        radial-gradient(ellipse 1.27px 2.83px at 1274px 944px, var(--paper-fleck-cool) 0 36%, transparent 100%),
+        radial-gradient(ellipse 1.64px 1.06px at 297px 124px, var(--paper-fleck-warm) 0 43%, transparent 100%),
+        radial-gradient(ellipse 2.01px 1.59px at 954px 562px, var(--paper-fleck-strong) 0 38%, transparent 100%),
+        radial-gradient(ellipse 2.38px 2.12px at 1532px 961px, var(--paper-fleck-strong) 0 45%, transparent 100%),
+        radial-gradient(ellipse 2.75px 2.65px at 544px 218px, var(--paper-fleck-soft) 0 40%, transparent 100%),
+        radial-gradient(ellipse 3.68px 0.88px at 1190px 636px, var(--paper-fleck) 0 47%, transparent 100%),
+        radial-gradient(ellipse 0.89px 1.41px at 157px 1015px, var(--paper-fleck) 0 42%, transparent 100%),
+        radial-gradient(ellipse 1.26px 1.94px at 758px 252px, var(--paper-fleck-faded) 0 37%, transparent 100%),
+        radial-gradient(ellipse 1.63px 2.47px at 1393px 650px, var(--paper-fleck-cool) 0 44%, transparent 100%),
+        radial-gradient(ellipse 2.00px 0.85px at 462px 1106px, var(--paper-fleck-cool) 0 39%, transparent 100%),
+        radial-gradient(ellipse 2.37px 1.23px at 1052px 323px, var(--paper-fleck-warm) 0 46%, transparent 100%),
+        radial-gradient(ellipse 2.74px 1.76px at 76px 798px, var(--paper-fleck-strong) 0 41%, transparent 100%),
+        radial-gradient(ellipse 3.67px 2.29px at 621px 1137px, var(--paper-fleck-strong) 0 36%, transparent 100%),
+        radial-gradient(ellipse 0.88px 2.82px at 1313px 431px, var(--paper-fleck-soft) 0 43%, transparent 100%);
+    background-size: 1600px 1200px;
+    background-repeat: repeat;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-color: var(--paper-grain);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 900'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.32' numOctaves='6' seed='27' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .72 .72 .72 0 -.105'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-size: 900px 900px;
+    mask-position: 13px -47px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 900'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.32' numOctaves='6' seed='27' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .72 .72 .72 0 -.105'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23n)'/%3E%3C/svg%3E");
+    -webkit-mask-size: 900px 900px;
+    -webkit-mask-position: 13px -47px;
+    opacity: .74;
 }
 
 .wrap {
     max-width: 560px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .topbar {
