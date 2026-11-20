@@ -20,6 +20,16 @@
     <meta name="theme-color" content="#000000">
 
     <title>Irondenker</title>
+    <script>
+        (() => {
+            try {
+                const theme = localStorage.getItem("irondenker_theme");
+                if (theme === "light" || theme === "dark") {
+                    document.documentElement.setAttribute("data-theme", theme);
+                }
+            } catch {}
+        })();
+    </script>
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- Google tag (gtag.js) -->

@@ -6,16 +6,16 @@
     function setTheme(theme) {
         if (!theme) {
             html.removeAttribute("data-theme");
-            localStorage.removeItem(KEY);
+            try {
+                localStorage.removeItem(KEY);
+            } catch {}
             return;
         }
         html.setAttribute("data-theme", theme);
-        localStorage.setItem(KEY, theme);
+        try {
+            localStorage.setItem(KEY, theme);
+        } catch {}
     }
-
-    // 저장된 값 우선 적용
-    const saved = localStorage.getItem(KEY);
-    if (saved === "light" || saved === "dark") setTheme(saved);
 
     btn.addEventListener("click", () => {
         const cur = html.getAttribute("data-theme");
