@@ -32,17 +32,39 @@
     </script>
     <link rel="stylesheet" href="/assets/css/style.css">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0QDYH5EHLG"></script>
+    <!-- Google tag: queue now, download after the initial render settles -->
     <script>
         window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", "G-0QDYH5EHLG");
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+        (() => {
+            const loadGoogleTag = () => {
+                if (document.querySelector("script[data-google-tag]")) return;
 
-        gtag('config', 'G-0QDYH5EHLG');
+                const script = document.createElement("script");
+                script.async = true;
+                script.src = "https://www.googletagmanager.com/gtag/js?id=G-0QDYH5EHLG";
+                script.dataset.googleTag = "true";
+                document.head.appendChild(script);
+            };
+
+            const schedule = () => {
+                if ("requestIdleCallback" in window) {
+                    window.requestIdleCallback(loadGoogleTag, { timeout: 2000 });
+                } else {
+                    window.setTimeout(loadGoogleTag, 500);
+                }
+            };
+
+            const deferGoogleTag = () => window.setTimeout(schedule, 1000);
+
+            if (document.readyState === "complete") deferGoogleTag();
+            else window.addEventListener("load", deferGoogleTag, { once: true });
+        })();
     </script>
 </head>
 
